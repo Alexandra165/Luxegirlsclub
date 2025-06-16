@@ -1,0 +1,20 @@
+.env
+*.log
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Binaries
+*.exe
+*.out
+
+# Archives
+*.tar.gz
+*.zip
+
+# Media (optional cleanup)
+frontend/static/videos/*
+frontend/static/images/*
+!frontend/static/images/bg-*
