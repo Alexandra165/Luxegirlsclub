@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV6WK3WJ7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YV6WK3WJ7D');
+</script>
+
+
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://luxegirlsclub.com/profile/{{.Profile.ID}}">
+  <title>{{.Profile.Name}} - <span data-translate="profile_title">Профиль</span></title>
+  <link rel="icon" href="/static/favicon.jpg" type="image/jpg">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="/static/languages.js" defer></script>
+  <style>
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 9999;
+    }
+    .lightbox-overlay img {
+      max-width: 90%; max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,215,0,0.4);
+    }
+    .lightbox-arrow {
+      position: absolute; top: 50%;
+      transform: translateY(-50%);
+      font-size: 48px;
+      color: white;
+      cursor: pointer;
+      z-index: 10000;
+      padding: 10px 20px;
+      background-color: rgba(0,0,0,0.4);
+      border-radius: 10px;
+    }
+    .lightbox-arrow.left { left: 20px; }
+    .lightbox-arrow.right { right: 20px; }
+
+    .profile-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 30px 20px;
+    }
+
+    .profile-photos-side {
+      max-width: 420px;
+      flex-shrink: 0;
+    }
+
+    .profile-photos-side img,
+.profile-photos-side video {
+    width: 100%;
+    height: 320px; /* ⬅️ Uvelicheno s 250 do 320 */
+    border-radius: 12px;
+    margin-bottom: 16px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.badge-online, .badge-verified {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+    .messenger-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .messenger {
+      background-color: gold;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .profile-details {
+      max-width: 650px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      color: white;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+.profile-details {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.profile-details h4 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profile-details p,
+.profile-details div,
+.profile-details li {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.profile-details strong {
+  font-weight: 600;
+}
+
+
+#sparkle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+    .messenger.whatsapp {
+      background-color: #25D366;
+      color: white !important;
+    }
+    .messenger.whatsapp:hover {
+      background-color: #1DA851;
+    }
+    .messenger.telegram {
+      background-color: #0088cc;
+      color: white !important;
+    }
+    .messenger.telegram:hover {
+      background-color: #007ab8;
+    }
+
+    .queen-name {
+      text-align: center;
+      font-size: 36px;
+      color: #000;
+      font-weight: bold;
+      text-shadow:
+        0 0 5px gold,
+        0 0 10px gold,
+        0 0 15px gold;
+      margin-bottom: 25px;
+      letter-spacing: 1.5px;
+    }
+
+@media (max-width: 768px) {
+    .profile-wrapper {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+      padding: 20px 10px !important;
+    }
+
+    .profile-photos-side {
+      width: 100% !important;
+      max-width: 400px !important;
+    }
+
+    .profile-details {
+      width: 100% !important;
+      max-width: 95vw !important;
+      padding: 16px !important;
+      font-size: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .profile-photo-thumb {
+      width: 48% !important;
+      height: auto !important;
+    }
+
+    .photo-gallery {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+    }
+  }
+
+  </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://luxegirlsclub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Profiles",
+      "item": "https://luxegirlsclub.com/#profiles"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{.Profile.City}}",
+      "item": "https://luxegirlsclub.com/escort-{{.Profile.City | lower}}.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{.Profile.ProfileName}}",
+      "item": "https://luxegirlsclub.com/profile/{{.Profile.ID}}"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{.Profile.ProfileName}}",
+  "jobTitle": "Escort",
+  "description": "{{.Profile.About}}",
+  "image": "{{index .Profile.Photos 0}}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{.Profile.City}}",
+    "addressRegion": "{{.Profile.District}}",
+    "addressCountry": "{{.Profile.Country}}"
+  },
+  "nationality": "{{.Profile.Nationality}}",
+  "height": "{{.Profile.Height.Int64}} cm",
+  "weight": "{{.Profile.Weight.Int64}} kg",
+  "url": "https://luxegirlsclub.com/profile/{{.Profile.ID}}"
+}
+</script>
+
+
+</head>
+
+<body>
+  <div class="page-background" style="background-image: url('/static/images/bg-profiles.jpg');"></div>
+  <div class="page-overlay"></div>
+  <canvas id="sparkle-canvas"></canvas>
+
+  <div class="language-switcher">
+    <img src="/static/flags/russianflag.png" alt="RU" width="28" onclick="switchLanguage('ru')" style="cursor:pointer; margin: 0 6px;">
+    <img src="/static/flags/ukflag.png" alt="EN" width="28" onclick="switchLanguage('en')" style="cursor:pointer; margin: 0 6px;">
+    <img src="/static/flags/georgianflag.png" alt="GE" width="28" onclick="switchLanguage('ge')" style="cursor:pointer; margin: 0 6px;">
+  </div>
+
+  <div class="profile-page">
+
+<nav class="breadcrumbs" aria-label="breadcrumb" style="font-size: 14px; margin: 10px 30px; color: #aaa;">
+  <a href="/" style="color: #aaa;">Home</a> › 
+  <a href="/" style="color: #aaa;">Profiles</a>
+  <a href="/escort-{{.Profile.City | lower}}.html" style="color: #aaa;">{{.Profile.City}}</a> › 
+  <span style="color: #fff;">{{.Profile.ProfileName}}</span>
+</nav>
+
+
+<h1 class="queen-name" style="text-align: center; font-size: 28px; color: #FFD700; margin: 30px 0 10px 0; text-shadow: 2px 2px 4px black;">
+  {{.Profile.Name}}
+</h1>
+
+
+ <div class="profile-wrapper" style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; flex-wrap: nowrap; gap: 0; padding: 10px;">
+
+
+    <!-- Левая часть -->
+    <div class="profile-photos-side" style="width: 50%; min-width: 160px; position: relative;">
+
+      <!-- Бейджи в левом верхнем углу блока с фото -->
+      <div class="profile-badges" style="position: absolute; top: -10px; left: 0; z-index: 10;">
+        {{if .Profile.Online}}
+          <span class="badge-online" style="background: #006400; color: #fff; padding: 4px 8px; border-radius: 12px; margin-right: 10px;">🟢 online</span>
+        {{end}}
+        {{if .Profile.Verified}}
+          <span class="badge-verified" style="background: #FFD700; color: #000; padding: 4px 8px; border-radius: 12px;">✔ 100%</span>
+        {{end}}
+      </div>
+
+      {{if .Photos}}
+      <h4 data-translate="label_photos" style="margin-top: 30px;">Фотографии</h4>
+      <div class="photo-gallery">
+        {{range .Photos}}
+          <img src="{{.}}" alt="Фото анкеты" class="profile-photo-thumb" loading="lazy">
+        {{end}}
+      </div>
+      {{end}}
+
+        {{if .Videos}}
+        <div class="profile-video">
+          <h4 data-translate="label_videos">Видео</h4>
+          {{range .Videos}}
+          <video controls>
+            <source src="{{.}}" type="video/mp4">
+            <span data-translate="label_video_not_supported">Ваш браузер не поддерживает видео.</span>
+          </video>
+          {{end}}
+        </div>
+        {{end}}
+
+       <div class="messenger-links">
+  {{range .Profile.Messengers}}
+    {{if eq . "whatsapp"}}
+      <a href="https://wa.me/{{$.CleanPhone}}?text=I%20found%20you%20on%20LuxeGirlsClub.com%20https://luxegirlsclub.com"
+         class="messenger whatsapp" target="_blank"
+         onclick="logWhatsappClick()">WhatsApp</a>
+    {{end}}
+    {{if eq . "telegram"}}
+      <a href="https://t.me/{{$.CleanPhone}}"
+         class="messenger telegram" target="_blank"
+         onclick="copyIntroText(); logTelegramClick()">Telegram</a>
+    {{end}}
+  {{end}}
+</div>
+
+
+
+      </div>
+
+      <!-- Правая часть -->
+      <div class="profile-details" style="width: 100%; max-width: 55vw; padding: 16px;">
+        <h4 data-translate="section_basic_info">Основная информация</h4>
+        <p><strong data-translate="label_profile_name">Имя в анкете:</strong> {{.Profile.ProfileName}}</p>
+        <p><strong data-translate="label_age">Возраст:</strong> {{.Profile.Age}}</p>
+        <p><strong data-translate="label_country">Страна:</strong> {{.Profile.Country}}</p>
+        <p><strong data-translate="label_city">Город:</strong> {{.Profile.City}}, {{.Profile.District}}</p>
+        <p><strong data-translate="label_nationality">Национальность:</strong>
+          <span class="trans-value" data-value="{{.Profile.Nationality}}" data-type="nationality">{{.Profile.Nationality}}</span>
+        </p>
+
+        <h4 data-translate="section_appearance">Внешность</h4>
+        <p><strong data-translate="label_height">Рост:</strong> {{if .Profile.Height.Valid}}{{.Profile.Height.Int64}} см{{else}}—{{end}}</p>
+        <p><strong data-translate="label_weight">Вес:</strong> {{if .Profile.Weight.Valid}}{{.Profile.Weight.Int64}} кг{{else}}—{{end}}</p>
+        <p><strong data-translate="label_eye_color">Цвет глаз:</strong>
+          <span class="trans-value" data-value="{{.Profile.EyeColor.String}}" data-type="eye_color">{{if .Profile.EyeColor.Valid}}{{.Profile.EyeColor.String}}{{else}}—{{end}}</span>
+        </p>
+        <p><strong data-translate="label_hair_color">Цвет волос:</strong>
+          <span class="trans-value" data-value="{{.Profile.HairColor.String}}" data-type="hair_color">{{if .Profile.HairColor.Valid}}{{.Profile.HairColor.String}}{{else}}—{{end}}</span>
+        </p>
+        <p><strong data-translate="label_hair_length">Длина волос:</strong>
+          <span class="trans-value" data-value="{{.Profile.HairLength.String}}" data-type="hair_length">{{if .Profile.HairLength.Valid}}{{.Profile.HairLength.String}}{{else}}—{{end}}</span>
+        </p>
+        <p><strong data-translate="label_bust_size">Размер груди:</strong> {{if .Profile.BustSize.Valid}}{{.Profile.BustSize.String}}{{else}}—{{end}}</p>
+        <p><strong data-translate="label_bust_type">Тип груди:</strong>
+          <span class="trans-value" data-value="{{.Profile.BustType.String}}" data-type="bust_type">{{if .Profile.BustType.Valid}}{{.Profile.BustType.String}}{{else}}—{{end}}</span>
+        </p>
+        <p><strong data-translate="label_intim">Интимная стрижка:</strong>
+          <span class="trans-value" data-value="{{.Profile.Intim.String}}" data-type="intim">{{if .Profile.Intim.Valid}}{{.Profile.Intim.String}}{{else}}—{{end}}</span>
+        </p>
+
+        <h4 data-translate="section_personal">Личное</h4>
+        <p><strong data-translate="label_orientation">Ориентация:</strong>
+          <span class="trans-value" data-value="{{.Profile.Orientation.String}}" data-type="orientation">{{if .Profile.Orientation.Valid}}{{.Profile.Orientation.String}}{{else}}—{{end}}</span>
+        </p>
+        <p><strong data-translate="label_smoker">Курит:</strong> {{if .Profile.Smoker.Bool}}✅ <span data-translate="yes">да</span>{{else}}❌ <span data-translate="no">нет</span>{{end}}</p>
+        <p><strong data-translate="label_tattoo">Татуировки:</strong> {{if .Profile.Tattoo.Bool}}✅ <span data-translate="yes">да</span>{{else}}❌ <span data-translate="no">нет</span>{{end}}</p>
+        <p><strong data-translate="label_piercing">Пирсинг:</strong> {{if .Profile.Piercing.Bool}}✅ <span data-translate="yes">да</span>{{else}}❌ <span data-translate="no">нет</span>{{end}}</p>
+
+        {{if .Profile.LanguagesList}}
+        <h4 data-translate="section_languages">Языки</h4>
+        <p class="language-list">
+          {{range .Profile.LanguagesList}}• {{.}}<br>{{end}}
+        </p>
+        {{end}}
+
+        <h4 data-translate="section_about">О себе</h4>
+        <p>{{.Profile.About}}</p>
+
+        <h4 data-translate="section_contacts">Контакты</h4>
+        <p><strong data-translate="label_phone">Телефон:</strong> <a href="tel:{{.Profile.Phone}}">{{.Profile.Phone}}</a></p>
+
+        {{if or .Profile.PriceIncall1h.Valid .Profile.PriceIncall2h.Valid .Profile.PriceIncall24h.Valid}}
+        <div class="price-section">
+          <h4 data-translate="section_incall">Incall</h4>
+          {{if .Profile.PriceIncall1h.Valid}}
+          <div><strong data-translate="price_1h">1 час:</strong> {{.Profile.PriceIncall1h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+          {{if .Profile.PriceIncall2h.Valid}}
+          <div><strong data-translate="price_2h">2 часа:</strong> {{.Profile.PriceIncall2h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+          {{if .Profile.PriceIncall24h.Valid}}
+          <div><strong data-translate="price_24h">24 часа:</strong> {{.Profile.PriceIncall24h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+        </div>
+        {{end}}
+
+        {{if or .Profile.PriceOutcall1h.Valid .Profile.PriceOutcall2h.Valid .Profile.PriceOutcall24h.Valid}}
+        <div class="price-section">
+          <h4 data-translate="section_outcall">Outcall</h4>
+          {{if .Profile.PriceOutcall1h.Valid}}
+          <div><strong data-translate="price_1h">1 час:</strong> {{.Profile.PriceOutcall1h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+          {{if .Profile.PriceOutcall2h.Valid}}
+          <div><strong data-translate="price_2h">2 часа:</strong> {{.Profile.PriceOutcall2h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+          {{if .Profile.PriceOutcall24h.Valid}}
+          <div><strong data-translate="price_24h">24 часа:</strong> {{.Profile.PriceOutcall24h.Int64}}{{if .Profile.Currency}} {{.Profile.Currency}}{{end}}</div>
+          {{end}}
+        </div>
+        {{end}}
+
+        {{if .Services}}
+        <h4 data-translate="section_services">Услуги</h4>
+        <ul style="list-style: none; padding-left: 0;">
+          {{range .Services}}
+          <li>✔️ {{.Name}}{{if .ExtraPrice.Valid}} (+{{.ExtraPrice.Int64}}{{$.Profile.Currency}}){{end}}</li>
+          {{end}}
+        </ul>
+        {{end}}
+
+<hr style="margin: 30px 0; border: 1px solid rgba(255,255,255,0.2);">
+
+<div class="view-counters" style="font-size: 15px; color: #ccc;">
+  👁️ <span data-translate="views_today">Сегодня:</span> {{.Profile.ViewsToday}}<br>
+  👁️ <span data-translate="views_total">Всего:</span> {{.Profile.ViewsTotal}}
+</div>
+
+      </div> <!-- /profile-details -->
+    </div> <!-- /profile-wrapper -->
+  </div> <!-- /profile-page -->
+
+
+<script>
+function translateProfileValues() {
+  const lang = localStorage.getItem("selectedLanguage") || "ru";
+
+  const valueDict = {
+    hair_color: {
+      "Блондинка": { en: "Blonde", ge: "ქერა" },
+      "Brunette": { ru: "Брюнетка", ge: "შავგვრემანი" },
+      "Blonde": { ru: "Блондинка", ge: "ქერა" },
+      "ქერა": { ru: "Блондинка", en: "Blonde" }
+    },
+    hair_length: {
+      "Длинные": { en: "Long", ge: "გრძელი" },
+      "Long": { ru: "Длинные", ge: "გრძელი" },
+      "გრძელი": { ru: "Длинные", en: "Long" }
+    },
+    eye_color: {
+      "Карие": { en: "Brown", ge: "ყავისფერი" },
+      "Brown": { ru: "Карие", ge: "ყავისფერი" },
+      "ყავისფერი": { ru: "Карие", en: "Brown" }
+    },
+    bust_type: {
+      "Натуральная": { en: "Natural", ge: "ბუნებრივი" },
+      "Natural": { ru: "Натуральная", ge: "ბუნებრივი" },
+      "ბუნებრივი": { ru: "Натуральная", en: "Natural" }
+    },
+    intim: {
+      "Бритая": { en: "Shaved", ge: "გაპარსული" },
+      "С прической": { en: "Styled", ge: "ვარცხნილობით" }
+    },
+    orientation: {
+      "Гетеро": { en: "Hetero", ge: "ჰეტერო" },
+      "Hetero": { ru: "Гетеро", ge: "ჰეტერო" },
+      "ჰეტერო": { ru: "Гетеро", en: "Hetero" }
+    },
+    nationality: {
+      "Русская": { en: "Russian", ge: "რუსი" },
+      "Russian": { ru: "Русская", ge: "რუსი" },
+      "რუსი": { ru: "Русская", en: "Russian" }
+    },
+    language: {
+      "Английский": { en: "English", ge: "ინგლისური" },
+      "English": { ru: "Английский", ge: "ინგლისური" },
+      "ინგლისური": { ru: "Английский", en: "English" },
+      "Русский": { en: "Russian", ge: "რუსული" },
+      "Russian": { ru: "Русский", ge: "რუსული" },
+      "რუსული": { ru: "Русский", en: "Russian" }
+    },
+    level: {
+  "Свободно": { en: "Fluent", ge: "თავისუფლად" },
+  "Fluent": { ru: "Свободно", ge: "თავისუფლად" },
+  "თავისუფლად": { ru: "Свободно", en: "Fluent" },
+  "Хорошо": { en: "Good", ge: "კარგად" },
+  "Good": { ru: "Хорошо", ge: "კარგად" },
+  "კარგად": { ru: "Хорошо", en: "Good" },
+  "Средне": { en: "Intermediate", ge: "საშუალოდ" },
+  "Intermediate": { ru: "Средне", ge: "საშუალოდ" },
+  "საშუალოდ": { ru: "Средне", en: "Intermediate" },
+  "Минимально": { en: "Basic", ge: "მინიმალურად" },
+  "Basic": { ru: "Минимально", ge: "მინიმალურად" },
+  "მინიმალურად": { ru: "Минимально", en: "Basic" }
+}
+  };
+
+  document.querySelectorAll(".trans-value").forEach(span => {
+    const type = span.dataset.type;
+    const original = span.dataset.value?.trim();
+    if (valueDict[type] && valueDict[type][original]) {
+      span.textContent = valueDict[type][original][lang] || original;
+    }
+  });
+
+  // 🔁 Перевод языков по коду (новая версия)
+document.querySelectorAll(".profile-details p").forEach(p => {
+  p.innerHTML = p.innerHTML
+    .replace(/\• (\w+): (\w+)/g, (match, langCode, levelCode) => {
+      const langNames = {
+        ru: { english: "Английский", russian: "Русский", georgian: "Грузинский", azerbaijani: "Азербайджанский" },
+        en: { english: "English", russian: "Russian", georgian: "Georgian", azerbaijani: "Azerbaijani" },
+        ge: { english: "ინგლისური", russian: "რუსული", georgian: "ქართული", azerbaijani: "აზერბაიჯანული" }
+      };
+      const levelNames = {
+        ru: { freely: "Свободно", good: "Хорошо", intermediate: "Средне", basic: "Минимально" },
+        en: { freely: "Fluent", good: "Good", intermediate: "Intermediate", basic: "Basic" },
+        ge: { freely: "თავისუფლად", good: "კარგად", intermediate: "საშუალოდ", basic: "მინიმალურად" }
+      };
+      const langName = langNames[lang]?.[langCode] || langCode;
+      const levelName = levelNames[lang]?.[levelCode] || levelCode;
+      return `• ${langName}: ${levelName}`;
+    });
+  });
+}
+
+window.addEventListener("load", () => {
+  setTimeout(translateProfileValues, 300);
+});
+</script>
+
+<script>
+let currentIndex = 0;
+let images = [];
+
+function showLightbox(index) {
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox-overlay";
+
+  const leftArrow = document.createElement("div");
+  leftArrow.className = "lightbox-arrow left";
+  leftArrow.textContent = "❮";
+  leftArrow.onclick = (e) => {
+    e.stopPropagation();
+    changePhoto(-1);
+  };
+
+  const rightArrow = document.createElement("div");
+  rightArrow.className = "lightbox-arrow right";
+  rightArrow.textContent = "❯";
+  rightArrow.onclick = (e) => {
+    e.stopPropagation();
+    changePhoto(1);
+  };
+
+  const image = document.createElement("img");
+  image.src = images[index];
+  image.onclick = (e) => e.stopPropagation();
+
+  overlay.appendChild(leftArrow);
+  overlay.appendChild(image);
+  overlay.appendChild(rightArrow);
+
+  overlay.onclick = () => document.body.removeChild(overlay);
+  document.body.appendChild(overlay);
+  currentIndex = index;
+}
+
+function changePhoto(direction) {
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+  const img = document.querySelector(".lightbox-overlay img");
+  img.src = images[currentIndex];
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  images = Array.from(document.querySelectorAll(".photo-gallery img")).map(img => img.src);
+  document.querySelectorAll(".photo-gallery img").forEach((img, index) => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showLightbox(index);
+    });
+  });
+});
+</script>
+
+<script>
+  const canvas = document.getElementById("sparkle-canvas");
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  const sparkles = Array.from({ length: 100 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 1.5 + 0.5,
+    alpha: Math.random(),
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5,
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const s of sparkles) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`; // ✨ Золото!
+      ctx.fill();
+
+      s.x += s.dx;
+      s.y += s.dy;
+
+      if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
+        s.x = Math.random() * canvas.width;
+        s.y = Math.random() * canvas.height;
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  const pathParts = window.location.pathname.split("/");
+  const profileID = parseInt(pathParts[pathParts.length - 1]);
+
+  if (!isNaN(profileID)) {
+    fetch("/api/increment-views", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ profile_id: profileID })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("📈 Просмотр засчитан:", data);
+    })
+    .catch(err => {
+      console.error("❌ Ошибка при обновлении просмотров:", err);
+    });
+  }
+});
+</script>
+
+
+
+<script>
+function copyIntroText() {
+  const intro = "Отправлено с сайта LuxGirlsClub";
+  navigator.clipboard.writeText(intro)
+    .then(() => {
+      alert("Текст скопирован! Просто вставьте его в Telegram ✨");
+    })
+    .catch(() => {
+      alert("Не удалось скопировать текст. Скопируйте вручную: " + intro);
+    });
+}
+</script>
+
+
+<script>
+function logWhatsappClick() {
+  const pathParts = window.location.pathname.split("/");
+  const profileID = parseInt(pathParts[pathParts.length - 1]);
+
+  if (!isNaN(profileID)) {
+    fetch("/api/log-whatsapp-click", { // ➡️ Исправили путь на /api/
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `profile_id=${profileID}`
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("✅ WhatsApp клик успешно зафиксирован!");
+      } else {
+        console.error("❌ Ошибка при логировании клика по WhatsApp (response not OK)");
+      }
+    })
+    .catch(error => {
+      console.error("❌ Ошибка Fetch запроса:", error);
+    });
+  } else {
+    console.error("❌ Ошибка: profileID не определён.");
+  }
+}
+</script>
+
+<script>
+function logTelegramClick() {
+  const pathParts = window.location.pathname.split("/");
+  const profileID = parseInt(pathParts[pathParts.length - 1]);
+
+  if (!isNaN(profileID)) {
+    fetch("/api/log-telegram-click", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `profile_id=${profileID}`
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("✅ Telegram клик зафиксирован!");
+      } else {
+        console.error("❌ Ошибка при логировании Telegram-клика");
+      }
+    })
+    .catch(error => {
+      console.error("❌ Ошибка Fetch для Telegram:", error);
+    });
+  }
+}
+</script>

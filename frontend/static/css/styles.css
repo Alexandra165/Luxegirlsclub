@@ -1,0 +1,1709 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.h1#headline {
+    color: #a020f0;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2), 0 0 3px rgba(255, 255, 255, 0.3);
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#headline {
+  color: #FFD700; /* золотисто-жёлтый */
+  font-weight: bold;
+  text-align: center;
+  text-shadow:
+    0 0 4px rgba(255, 215, 0, 0.5),  /* основное свечение */
+    0 0 10px rgba(255, 215, 0, 0.3), /* лёгкий ореол */
+    -1px -1px 1px #000,              /* чёрная окантовка */
+     1px -1px 1px #000,
+    -1px  1px 1px #000,
+     1px  1px 1px #000;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.lightbox-overlay img,
+.lightbox-overlay video {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+
+
+html, body {
+    height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding-top: 15px; /* чтобы текст не упирался в верхнюю панель */
+}
+
+.content h1 {
+    font-size: 48px;
+    color: #FFD700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #ddd;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* Фиксируем позицию модального окна */
+.modal {
+    display: fix;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Контейнер для модального окна */
+.modal-content {
+    background: #222;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5);
+    color: white;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Кнопки в модальном окне */
+.modal-content .btn-auth {
+    margin: 10px;
+    background: #FFD700;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    z-index: 999999; /* eshche vyshe */
+}
+
+.modal-content .btn-auth:hover {
+    background: #ffa500;
+}
+
+.language-switcher {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.4); /* полупрозрачный чёрный фон */
+    border-radius: 12px;
+    padding: 5px 10px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+      z-index: 1 !important;
+}
+.language-switcher img {
+    cursor: pointer;
+    margin: 0 6px;
+    width: 28px;
+}
+
+
+.language-switcher img:hover {
+    transform: scale(1.1);
+}
+
+/* Кнопки входа и регистрации */
+.language-switcher .btn-auth {
+    background: #FFD700;
+    color: #222;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.language-switcher .btn-auth:hover {
+    background: #ffa500;
+}
+
+.flag {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flag:hover {
+    transform: scale(1.1);
+}
+
+
+/* Выравнивание формы */
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Расстояние между элементами */
+}
+
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Улучшаем поля ввода */
+.register-container input,
+.register-container select,
+.register-container textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 6px;
+    background: rgba(34, 34, 34, 0.95);
+    border: 1px solid #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Кнопка регистрации */
+.register-container button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #FFD700, #ffcc33);
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.register-container button:hover {
+    background: linear-gradient(135deg, #ffa500, #ffb733);
+    transform: scale(1.03);
+}
+
+/* Фиксируем размер кнопки загрузки фото */
+.register-container input[type="file"] {
+    padding: 5px;
+    border: 1px solid #FFD700;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 20px;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.service-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  item-template-columns: repeat(3, 1fr);
+}
+
+
+
+.profiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  justify-items: center;
+}
+
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.ribbon-top {
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    background-color: gold;
+    color: black;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.profile-card img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.languages-block {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.languages-block ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.languages-block li {
+  list-style-type: circle;
+  margin-bottom: 4px;
+}
+
+
+/* Эффект увеличения карточки при наведении */
+.profile-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Фото в карточке */
+.profile-card img {
+    width: 100%;
+    height: 220px;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+
+
+/* Информация о девушке */
+.profile-card .info {
+    padding: 35px;
+}
+
+.profile-card h3 {
+    font-size: 1.4rem;
+    color: gold;
+}
+
+.profile-card p {
+    font-size: 1rem;
+    color: white;
+    opacity: 0.8;
+}
+
+
+/* Юридическая информация */
+.legal-info {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    max-width: 90%;
+    padding: 5px 10px;
+}
+
+.legal-info a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('/static/sia.jpg') no-repeat center center/cover;
+}
+
+/* Стили для фонового изображения */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: none; /* убираем фон здесь */
+}
+
+/* Полупрозрачная затемняющая подложка */
+.overlay {
+    position: fixed; /* фиксируем и вуаль тоже */
+    top: 0;
+    left: 0;
+mediumvioletred;    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+
+.register-container {
+    background: rgba(0, 0, 0, 0.6); /* полупрозрачный чёрный */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 80px auto;
+    color: #fff;
+    z-index: 10;
+    position: relative;
+}
+
+
+/* Плавная анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Заголовок формы */
+.register-container h2 {
+    text-align: center;
+    color: #FFD700;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Общие стили для полей */
+.register-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #ddd;
+    font-size: 14px;
+}
+
+.register-container input,
+.register-container select,
+.register-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    background: rgba(34, 34, 34, 0.95);
+    border: 1px solid #FFD700;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект фокуса */
+.register-container input:focus,
+.register-container select:focus,
+.register-container textarea:focus {
+    border-color: #ffa500;
+    box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.8);
+    outline: none;
+}
+
+/* Чекбоксы */
+.register-container input[type="checkbox"] {
+    transform: scale(1);
+    margin-right: 5px;
+    accent-color: #FFD700;
+}
+
+/* Стилизация выпадающих списков */
+.register-container select {
+    appearance: none;
+    background-image: url('/static/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+}
+
+/* Кнопка регистрации */
+.register-container button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #FFD700, #ffcc33);
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.register-container button:hover {
+    background: linear-gradient(135deg, #ffa500, #ffb733);
+    transform: scale(1.03);
+}
+
+/* Контейнер для загрузки фото */
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Фиксируем размер кнопки загрузки фото */
+.register-container input[type="file"] {
+    padding: 5px;
+    border: 1px solid #FFD700;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Выравнивание чекбоксов */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; /* Расстояние между чекбоксами */
+    align-items: center;
+}
+
+/* Размер и выравнивание чекбоксов */
+.checkbox-group input[type="checkbox"] {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px; /* Расстояние между чекбоксом и текстом */
+    cursor: pointer;
+}
+
+/* Фикс подсвечивания */
+input[type="checkbox"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: 2px solid rgba(255, 215, 0, 0.7); /* Золотая подсветка */
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); /* Мягкое свечение */
+    transition: 0.2s;
+}
+
+/* Ограничение выхода за контейнер */
+.register-container {
+    overflow: hidden;
+    padding: 10px;
+}
+
+
+.login-container {
+    max-width: 400px;
+    margin: 120px auto;
+    padding: 30px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.55); /* Прозрачный чёрный, как витраж */
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    z-index: 2;
+    position: relative;
+}
+
+
+/* Заголовок формы */
+.login-container h2 {
+    text-align: center;
+    color: #FFD700;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Поля ввода */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    background: rgba(34, 34, 34, 0.95);
+    border: 1px solid #FFD700;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Эффект фокуса */
+.login-container input:focus {
+    border-color: #ffa500;
+    box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.8);
+    outline: none;
+}
+
+/* Кнопка входа */
+.login-container button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #FFD700, #ffcc33);
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.login-container button:hover {
+    background: linear-gradient(135deg, #ffa500, #ffb733);
+    transform: scale(1.03);
+}
+
+/* Ссылка на регистрацию */
+.login-container p {
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+}
+
+.login-container a {
+    color: #FFD700;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Стили для страницы аккаунта (account.html) --- */
+body {
+    background-color: #121212;
+    color: #f8f9fa;
+}
+
+.status-online {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #28a745;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+
+.card-profile {
+    background-color: #23262d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.form-control, .form-select {
+    background-color: #23262d;
+    color: #f8f9fa;
+    border-color: #444;
+}
+
+.btn-profile {
+    background-color: #d4af37;
+    color: #000;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+body.account-page {
+    background-color: #121212 !important;
+    color: #f8f9fa !important;
+    background: url('/static/sia.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+
+
+.account-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.account-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.account-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-container label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.account-container input,
+.account-container select,
+.account-container textarea {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.account-container button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #d4af37;
+    color: black;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.account-container button:hover {
+    background-color: #b38e20;
+}
+
+
+/* 🔹 Контейнер для фото */
+.profile-photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Отступы между фото */
+    margin-top: 20px;
+}
+
+/* 🔹 Фото профиля */
+.profile-photo {
+    width: 120px; /* Размер фото */
+    height: 120px;
+    object-fit: cover; /* Заполнение без искажений */
+    border-radius: 10px; /* Закругленные углы */
+    border: 2px solid #fff; /* Белая рамка */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легкая тень */
+}
+
+
+/* 🔹 Обертка для фото */
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+
+/* 🔹 Иконка удаления фото */
+.delete-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: rgba(255, 0, 0, 0.9);
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* 🔹 Эффект при наведении */
+.delete-icon:hover {
+    background: rgb(200, 0, 0);
+    transform: scale(1.1);
+}
+
+
+
+/* Стили для выпадающих списков */
+select {
+    background-color: #222; /* Тёмный фон */
+    color: #fff; /* Белый текст */
+    border: 1px solid #555; /* Граница */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Стили для выпадающих элементов */
+select option {
+    background-color: #222; /* Фон опций */
+    color: #fff; /* Белый текст */
+}
+
+/* При наведении */
+select option:hover {
+    background-color: #444; /* Чуть светлее при наведении */
+}
+
+
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+.page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* затемнение */
+  z-index: -1;
+}
+
+
+#sparkle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.service-checkbox {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 6px 12px;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.4);
+    color: gold;
+    font-size: 14px;
+}
+.service-checkbox input {
+    margin-right: 6px;
+}
+
+/* Золотой цвет для галочки в чекбоксах */
+input[type="checkbox"]:checked {
+  accent-color: darkorange;
+}
+
+.media-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 2px 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background: rgba(255, 0, 0, 0.7);
+}
+
+.profile-video {
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  .hero {
+    padding: 60px 15px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    padding-top: 0;
+    margin-top: -30px;
+  }
+
+  .language-switcher {
+    margin-top: 15px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: static;
+    background: none;
+    padding: 0;
+  }
+
+  .flag {
+    width: 26px;
+  }
+.btn-auth {
+    padding: 6px 12px;
+    font-size: 13px;
+    background-color: #FFD700;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+
+
+.btn-auth:hover {
+  background-color: #e6c200;
+}
+
+
+  a {
+    text-decoration: none !important;
+  }
+
+  h1#headline,
+  .content h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  p#description,
+  .content p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profile-photo-thumb {
+  width: 120px;        /* было 120 */
+  height: 160px;       /* было 160 */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+
+.profile-photo-thumb:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+
+.profile-details {
+  background-color: rgba(0, 0, 0, 0.4); /* чёрный с прозрачностью */
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  max-width: 900px;
+  margin: 40px auto;
+  backdrop-filter: blur(6px);
+  width: 700px;
+}
+.profile-details h4 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #ffcc66;
+}
+.profile-details p, .profile-details li {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.profile-page {
+  width: 90%;
+  max-width: 1080px;
+  margin: 40px auto;
+}
+
+ @media (max-width: 768px) {
+  .profiles-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 10px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .profile-card {
+    max-width: none;
+    padding: 8px;
+  }
+
+  .profile-card img {
+    height: 160px;
+  }
+}
+
+
+  .profile-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .profile-card p {
+    font-size: 13px;
+    color: #ccc;
+  }
+
+  .modal-content {
+    width: 90%;
+    margin-top: 80px; /* отодвигаем от верхнего края */
+  }
+
+  #legal-text {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 30px;
+  flex-wrap: nowrap; /* ❗️временно убираем wrap */
+}
+.profile-photos-side {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-photo-thumb {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.profile-photo-thumb:hover {
+  transform: scale(1.04);
+  cursor: zoom-in;
+}
+
+.profile-video video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin-top: 10px;
+}
+
+.profile-details {
+    flex: 1 1 600px; /* или любое другое значение ширины */
+  min-width: 0;
+}
+
+.messenger-links {
+  margin-top: 20px;
+}
+
+.messenger-links a {
+  display: inline-block;
+  margin: 5px 5px;
+  padding: 8px 12px;
+  background: #FFD700;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.messenger-links a:hover {
+  background: #ffa500;
+}
+
+
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-photos-side {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .photo-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-photo-thumb {
+    width: 48%;
+    height: auto;
+  }
+}
+
+
+.lux-queens-container {
+  max-width: 90vw;
+  padding: 15px 20px;
+  margin: 15px auto;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(3px);
+  position: relative;
+  overflow: visible;
+}
+
+/* Заголовок по центру с блеском */
+.lux-title {
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  margin: 25px auto 10px;
+  color: transparent;
+  background: linear-gradient(90deg, gold, #ffd700, #fff6cc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 4s infinite linear;
+}
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+ min-height: 300px;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  flex-grow: 1;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.lux-card {
+  flex: 0 0 240px; /* фиксированная ширина */
+  max-width: 200px;
+  height: auto;
+  background: #111;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+
+.lux-card:hover {
+  transform: scale(1.05);
+}
+
+.lux-card img {
+  width: 100%;
+  height: 220px; /* фиксируем, чтобы не прыгало */
+  object-fit: cover;
+  display: block;
+}
+
+.lux-info {
+  padding: 10px 12px;
+  color: white;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), black);
+  text-align: center;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+
+.lux-name {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.lux-status {
+  color: gold;
+  font-size: 14px;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: gold;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px 2px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.lux-location {
+  color: #ddd;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+
+
+/* Стрелка влево — ближе к левому краю */
+.slider-arrow.left {
+  left: 0px; /* Было 10px, теперь ближе к краю */
+}
+
+/* Стрелка вправо — ближе к правому краю */
+.slider-arrow.right {
+  right: 0px; /* Аналогично */
+}
+
+
+.slider-arrow:hover {
+  background: rgba(0,0,0,0.9);
+}
+
+@media (max-width: 600px) {
+  .lux-card {
+    min-width: 160px;
+    max-width: 160px;
+  }
+
+  .lux-card img {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lux-queens-container {
+    padding: 10px;
+    margin: 20px auto 40px;
+    border-radius: 15px;
+    max-width: 95vw;
+    background: rgba(0, 0, 0, 0.4); /* слегка затемнённый фон */
+  }
+
+  .lux-title {
+    font-size: 24px;
+    margin: 10px auto 15px;
+    text-align: center;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 12px;
+    padding: 5px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .lux-card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 200px;
+    max-width: 190px;
+    border-radius: 20px;
+    background: #000;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    text-align: center;
+  }
+
+  .lux-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .lux-card .name {
+    font-size: 14px;
+    color: #fff;
+    margin: 5px 0 0;
+  }
+
+  .lux-card .badge {
+    font-size: 12px;
+    color: gold;
+    margin-bottom: 8px;
+  }
+
+  .slider-arrow {
+    display: none; /* на мобилках скролл пальцем — стрелки можно скрыть */
+  }
+}
+
+  
+@media (min-width: 1024px) {
+  .language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: none;
+    padding: 0;
+  }
+
+  .flag {
+    width: 26px;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .btn-auth {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #FFD700;
+    color: #000;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+    .register-container {
+        padding: 20px;
+        margin: 40px 10px;
+        font-size: 36px;
+    }
+
+    .register-container input,
+    .register-container select,
+    .register-container textarea {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 4px 6px;
+	z-index: 1; /* больше, чем у register-container */
+    }
+
+    .services-checkboxes label {
+        display: block;
+        margin-bottom: 6px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+        margin: 100px auto;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .login-container label {
+        font-size: 14px;
+    }
+
+    .login-container input {
+        font-size: 16px;
+    }
+
+    .btn-auth {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    #no-account {
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+  
+@media screen and (max-width: 600px) {
+
+  body {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  h1, h2, h3 {
+    font-size: 22px;
+  }
+
+  .hero {
+    padding: 60px 15px 20px;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profiles-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .profile-card {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .profile-card img {
+    height: 200px;
+  }
+
+  .content h1 {
+    font-size: 26px;
+  }
+
+  .content p,
+  .profile-card p {
+    font-size: 15px;
+  }
+
+  .legal-info {
+    font-size: 11px;
+    padding: 10px;
+    left: 10px;
+    text-align: left;
+    transform: none;
+    max-width: 95%;
+  }
+
+  .register-container,
+  .login-container {
+    width: 94%;
+    padding: 20px;
+    margin: 30px auto;
+    font-size: 16px;
+  }
+
+  .register-container input,
+  .register-container select,
+  .register-container textarea,
+  .login-container input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .service-checkbox {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .profile-photo-thumb {
+    width: 48%;
+    height: auto;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
+
+  .language-switcher {
+    flex-wrap: wrap;
+    justify-content: center;
+    position: static;
+    background: none;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .flag {
+    width: 28px;
+  }
+
+  .btn-auth {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+}
+
+.last-seen {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-top: 5px;
+    display: block;
+}
+
+
+#profiles-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* desktop */
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  #profiles-container {
+    grid-template-columns: repeat(4, 1fr); /* планшеты */
+  }
+}
+
+@media (max-width: 768px) {
+  #profiles-container {
+    grid-template-columns: repeat(2, 1fr); /* телефоны */
+  }
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin-top: 120px;
+  }
+}
+
+
+
+.blurred-background {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* 💥 Это твоя модалка 18+ */
+#age-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999; /* обязательно максимальный z-index */
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.92);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Содержимое модалки */
+#age-modal .modal-content {
+  background: #111;
+  padding: 30px 25px;
+  border-radius: 14px;
+  text-align: center;
+  color: white;
+  max-width: 320px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+
+
+
+@media (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-photos-side {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .photo-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-photo-thumb {
+    width: 48%;
+    height: auto;
+  }
+
+  .profile-details {
+    max-width: 110vw;
+    padding: 20px;
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .profile-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .profiles-container,
+  #profiles-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    gap: 12px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .profile-details {
+    width: 100%;
+    max-width: 95vw;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .profile-wrapper {
+    padding: 0 10px;
+  }
+}
+
+.profile-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV6WK3WJ7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YV6WK3WJ7D');
+</script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Редактирование анкеты модели на сайте LuxGirlsClub: фото, видео, услуги и личная информация.">
+    <link rel="canonical" href="https://luxegirlsclub.com/account.html">
+    <title>Редактировать анкету — LuxGirlsClub</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/favicon.jpg" type="image/jpg">
+    <script src="/static/languages.js" defer></script>
+</head>
+
+
+<body class="account-page">
+<div class="page-background" style="background-image: url('/static/images/bg-account.jpg');"></div>
+<div class="page-overlay"></div>
+<canvas id="sparkle-canvas"></canvas>
+<div class="background"></div>
+
+<div class="content">
+    <div class="language-switcher">
+        <img src="/static/flags/georgianflag.png" onclick="switchLanguage('ge')" class="flag">
+        <img src="/static/flags/russianflag.png" onclick="switchLanguage('ru')" class="flag">
+        <img src="/static/flags/ukflag.png" onclick="switchLanguage('en')" class="flag">
+        <a href="/logout" class="btn-auth">Logout</a>
+    </div>
+
+  <div></div> <!-- Заглушка для выравнивания -->
+    <button id="upProfileBtn" style="
+        background: #FFD700;
+        color: #000;
+        font-weight: bold;
+        padding: 6px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(255,215,0,0.3);
+    ">
+        🔝 Up
+    </button>
+</div>
+
+
+    <div class="account-container">
+        <h2 data-translate="my_profile">Мой профиль</h2>
+        <form id="profile-form">
+
+            <!-- Основное -->
+            <label>Имя пользователя *</label>
+            <input type="text" id="username">
+
+            <label data-translate="new_password">Новый пароль (если хотите изменить)</label>
+            <input type="password" id="password">
+
+            <label data-translate="email">Email *</label>
+            <input type="email" id="email">
+
+            <label data-translate="profile_name">Название анкеты *</label>
+            <input type="text" id="profile_name">
+
+            <label data-translate="phone">Телефон *</label>
+            <input type="tel" id="phone">
+
+<label data-translate="label_messengers">Мессенджеры:</label>
+<div class="messengers">
+  <label><input type="checkbox" id="messenger_whatsapp"> WhatsApp</label>
+  <label><input type="checkbox" id="messenger_telegram"> Telegram</label>
+</div>
+
+
+
+            <label for="country" data-translate="label_country">Страна *</label>
+<select id="country" name="country" class="form-select" data-translate-options="opt_country" required>
+    <option value="" id="opt_country_choose">Выберите страну</option>
+    <option value="Georgia" id="opt_country_georgia">Грузия</option>
+    <option value="Armenia" id="opt_country_armenia">Армения</option>
+    <option value="Azerbaijan" id="opt_country_azerbaijan">Азербайджан</option>
+    <option value="Turkey" id="opt_country_turkey">Турция</option>
+    <option value="UAE" id="opt_country_uae">ОАЭ</option>
+</select>
+
+
+<label data-translate="label_city">Город *</label>
+<select id="city" name="city" data-translate-options="opt_city" required>
+  <option value="" disabled selected data-translate="select_city">Выберите город</option>
+
+  <!-- Georgia -->
+  <option value="Tbilisi" id="opt_city_tbilisi">Tbilisi</option>
+  <option value="Batumi" id="opt_city_batumi">Batumi</option>
+  <option value="Kutaisi" id="opt_city_kutaisi">Kutaisi</option>
+  <option value="Rustavi" id="opt_city_rustavi">Rustavi</option>
+
+  <!-- Armenia -->
+  <option value="Yerevan" id="opt_city_yerevan">Yerevan</option>
+
+  <!-- Azerbaijan -->
+  <option value="Baku" id="opt_city_baku">Baku</option>
+  <option value="Gyanja" id="opt_city_gyanja">Gyanja</option>
+  <option value="Sumgait" id="opt_city_sumgait">Sumgait</option>
+
+  <!-- Turkey -->
+  <option value="Istanbul" id="opt_city_istanbul">Istanbul</option>
+  <option value="Ankara" id="opt_city_ankara">Ankara</option>
+  <option value="Izmir" id="opt_city_izmir">Izmir</option>
+
+  <!-- UAE -->
+  <option value="Dubai" id="opt_city_dubai">Dubai</option>
+
+  <!-- Other -->
+  <option value="Other" id="opt_city_other">Other</option>
+</select>
+
+
+<label data-translate="label_district">Район:</label>
+<select id="district" name="district" data-translate-options="opt_district">
+  <option value="" disabled selected data-translate="select_district">Выберите район</option>
+
+  <optgroup label="Georgia">
+    <option value="Vake" id="opt_district_vake">Vake</option>
+    <option value="Saburtalo" id="opt_district_saburtalo">Saburtalo</option>
+    <option value="Isani" id="opt_district_isani">Isani</option>
+    <option value="Samgori" id="opt_district_samgori">Samgori</option>
+    <option value="Gldani" id="opt_district_gldani">Gldani</option>
+    <option value="Dighomi" id="opt_district_dighomi">Dighomi</option>
+    <option value="Mtatsminda" id="opt_district_mtatcminda">Mtatsminda</option>
+    <option value="Chughureti" id="opt_district_chughureti">Chughureti</option>
+    <option value="Ortachala" id="opt_district_ortachala">Ortachala</option>
+  </optgroup>
+
+  <optgroup label="Azerbaijan">
+    <option value="Nasimi" id="opt_district_nasimi">Nasimi</option>
+    <option value="Narimanov" id="opt_district_narimanov">Narimanov</option>
+    <option value="Yasamal" id="opt_district_yasamal">Yasamal</option>
+    <option value="Sabayil" id="opt_district_sabayil">Sabayil</option>
+    <option value="Khatai" id="opt_district_khatai">Khatai</option>
+  </optgroup>
+
+  <optgroup label="Turkey (Istanbul)">
+    <option value="Kadikoy" id="opt_district_kadikoy">Kadıköy</option>
+    <option value="Besiktas" id="opt_district_besiktas">Beşiktaş</option>
+    <option value="Sisli" id="opt_district_sisli">Şişli</option>
+    <option value="Fatih" id="opt_district_fatih">Fatih</option>
+    <option value="Uskudar" id="opt_district_uskudar">Üsküdar</option>
+  </optgroup>
+
+  <option value="Other" id="opt_district_other">Other</option>
+</select>
+
+
+
+            <label data-translate="label_age">Возраст *</label>
+<input type="number" id="age" min="18" max="100">
+
+<label data-translate="label_height">Рост (в см):</label>
+<input type="number" id="height" min="100" max="250">
+
+<label data-translate="label_weight">Вес (в кг):</label>
+<input type="number" id="weight" min="30" max="200">
+
+<label data-translate="label_eye_color">Цвет глаз:</label>
+<select id="eye_color">
+    <option value="Карие" data-translate="eye_brown">Карие</option>
+    <option value="Голубые" data-translate="eye_blue">Голубые</option>
+    <option value="Зелёные" data-translate="eye_green">Зелёные</option>
+    <option value="Серые" data-translate="eye_gray">Серые</option>
+    <option value="Чёрные" data-translate="eye_black">Чёрные</option>
+    <option value="Другой" data-translate="eye_other">Другой</option>
+</select>
+
+
+<label data-translate="label_hair_color">Цвет волос:</label>
+<select id="hair_color">
+    <option value="Блондинка" data-translate="hair_blonde">Блондинка</option>
+    <option value="Брюнетка" data-translate="hair_brunette">Брюнетка</option>
+    <option value="Рыжая" data-translate="hair_red">Рыжая</option>
+    <option value="Шатенка" data-translate="hair_brown">Шатенка</option>
+    <option value="Другой" data-translate="hair_other">Другой</option>
+</select>
+
+
+
+<label data-translate="label_hair_length">Длина волос:</label>
+<select id="hair_length" required>
+    <option value="" disabled selected data-translate="select_hair_length">Выберите длину</option>
+    <option value="Короткие" data-translate="hair_short">Короткие</option>
+    <option value="Средние" data-translate="hair_medium">Средние</option>
+    <option value="Длинные" data-translate="hair_long">Длинные</option>
+</select>
+
+<label data-translate="label_breast_size">Размер груди:</label>
+<select id="breast_size">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+</select>
+
+<label data-translate="label_breast_type">Тип груди:</label>
+<select id="breast_type">
+    <option value="Natural" data-translate="breast_natural">Натуральная</option>
+    <option value="Silicone" data-translate="breast_silicone">Силиконовая</option>
+</select>
+
+<label data-translate="label_intim">Интимная стрижка:</label>
+<select id="intim">
+    <option value="Бритая" data-translate="intim_shaved">Бритая</option>
+    <option value="С прической" data-translate="intim_styled">С прической</option>
+</select>
+
+
+<label data-translate="label_orientation">Ориентация:</label>
+<select id="orientation">
+    <option value="Гетеро" data-translate="orientation_hetero">Гетеро</option>
+    <option value="Би" data-translate="orientation_bi">Би</option>
+    <option value="Лесби" data-translate="orientation_lesbian">Лесби</option>
+</select>
+
+
+<label data-translate="label_smoke">Курит:</label>
+<select id="smoke">
+    <option value="Да" data-translate="yes">Да</option>
+    <option value="Нет" data-translate="no">Нет</option>
+</select>
+
+
+<label data-translate="label_tattoo">Есть татуировки:</label>
+<select id="tattoo">
+    <option value="Да" data-translate="yes">Да</option>
+    <option value="Нет" data-translate="no">Нет</option>
+</select>
+
+
+<label data-translate="label_piercing">Есть пирсинг:</label>
+<select id="piercing">
+    <option value="Да" data-translate="yes">Да</option>
+    <option value="Нет" data-translate="no">Нет</option>
+</select>
+
+
+<label data-translate="label_nationality">Национальность:</label>
+<select id="nationality">
+    <option value="Русская" data-translate="nat_russian">Русская</option>
+    <option value="Грузинка" data-translate="nat_georgian">Грузинка</option>
+    <option value="Армянка" data-translate="nat_armenian">Армянка</option>
+    <option value="Украинка" data-translate="nat_ukrainian">Украинка</option>
+    <option value="Белоруска" data-translate="nat_belarusian">Белоруска</option>
+    <option value="Турчанка" data-translate="nat_turkish">Турчанка</option>
+    <option value="Азербайджанка" data-translate="nat_azerbaijani">Азербайджанка</option>
+    <option value="Другое" data-translate="nat_other">Другое</option>
+</select>
+
+
+
+            <!-- Языки -->
+            <div class="language-level">
+  <span>Грузинский:</span>
+  <select id="lang_georgian">
+    <option value="">Не владею</option>
+    <option value="Свободно">Свободно</option>
+    <option value="Хорошо">Хорошо</option>
+    <option value="Средне">Средне</option>
+    <option value="Минимально">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span>Русский:</span>
+  <select id="lang_russian">
+    <option value="">Не владею</option>
+    <option value="Свободно">Свободно</option>
+    <option value="Хорошо">Хорошо</option>
+    <option value="Средне">Средне</option>
+    <option value="Минимально">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span>Английский:</span>
+  <select id="lang_english">
+    <option value="">Не владею</option>
+    <option value="Свободно">Свободно</option>
+    <option value="Хорошо">Хорошо</option>
+    <option value="Средне">Средне</option>
+    <option value="Минимально">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span>Азербайджанский:</span>
+  <select id="lang_azerbaijani">
+    <option value="">Не владею</option>
+    <option value="Свободно">Свободно</option>
+    <option value="Хорошо">Хорошо</option>
+    <option value="Средне">Средне</option>
+    <option value="Минимально">Минимально</option>
+  </select>
+</div>
+
+
+            <!-- Услуги -->
+            <label>Предоставляемые услуги:</label>
+<div id="services-container" class="services-grid">
+    <!-- Чекбоксы будут добавлены динамически через JS -->
+</div>
+
+            <!-- О себе -->
+            <label data-translate="label_about">О себе</label>
+            <textarea id="about"></textarea>
+
+            <label data-translate="label_meeting_type">Тип встречи:</label>
+<div class="visit-type">
+    <label><input type="checkbox" id="incall"> <span data-translate="incall">Incall</span></label>
+    <label><input type="checkbox" id="outcall"> <span data-translate="outcall">Outcall</span></label>
+</div>
+
+
+            <!-- Валюта и цены -->
+            <label data-translate="label_currency">Валюта:</label>
+<select id="currency">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GEL">GEL</option>
+    <option value="AMD">AMD</option>
+    <option value="RUB">RUB</option>
+    <option value="TRY">TRY</option>
+    <option value="AED">AED</option>
+</select>
+
+<label data-translate="label_prices_incall">Цены (Incall):</label>
+<input type="number" id="price_incall_1h" name="price_incall_1h" placeholder="1 час (Incall)">
+<input type="number" id="price_incall_2h" name="price_incall_2h" placeholder="2 часа (Incall)">
+<input type="number" id="price_incall_24h" name="price_incall_24h" placeholder="24 часа (Incall)">
+
+<label data-translate="label_prices_outcall">Цены (Outcall):</label>
+<input type="number" id="price_outcall_1h" name="price_outcall_1h" placeholder="1 час (Outcall)">
+<input type="number" id="price_outcall_2h" name="price_outcall_2h" placeholder="2 часа (Outcall)">
+<input type="number" id="price_outcall_24h" name="price_outcall_24h" placeholder="24 часа (Outcall)">
+
+
+             <div id="uploadStatus" style="display:none; color:gold; font-weight:bold; margin: 10px 0;">
+    ⏳ Загрузка медиафайлов...
+</div>
+
+
+            <label data-translate="label_photos">Ваши фото:</label>
+<div id="profilePhotos" class="profile-photos-container"></div>
+
+<label data-translate="label_add_photos">Добавить фото</label>
+<input type="file" id="newPhotos" multiple accept="image/*">
+
+<label data-translate="label_videos">Ваши видео:</label>
+<div id="profileVideos" class="profile-videos-container"></div>
+
+<label data-translate="label_add_videos">Добавить видео</label>
+<input type="file" id="newVideos" multiple accept="video/*">
+
+<small style="display:block; margin-top:4px; color:#ccc; font-size:15px;" data-translate="video_hint">
+    ⓘ Загрузка видео может занять несколько секунд. Пожалуйста, подождите.
+</small>
+
+<!-- Статистика -->
+<h3 data-translate="label_stats">Статистика:</h3>
+<p><span data-translate="views_today">👁 Просмотров сегодня:</span> <span id="views_today">0</span></p>
+<p><span data-translate="views_total">📈 Всего просмотров:</span> <span id="views_total">0</span></p>
+
+<!-- Статус анкеты -->
+<label data-translate="label_profile_status">Статус анкеты:</label>
+<button type="button" id="pauseBtn" class="btn-auth" data-translate="pause">⏸ Приостановить анкету</button>
+<div id="freeze-status" class="freeze-status"></div>
+<br><br>
+<button type="submit" class="btn-auth" id="btn-save" data-translate="save">Сохранить изменения</button>
+
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/account.js?v=999"></script>
+<script>
+function toggleDistricts() {
+    const city = document.getElementById("city").value;
+    document.getElementById("districtContainer").style.display = (city === "Тбилиси" || city === "Баку") ? "block" : "none";
+}
+</script>
+
+<script>
+const canvas = document.getElementById("sparkle-canvas");
+const ctx = canvas.getContext("2d");
+let width, height;
+let sparkles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function createSparkle() {
+    return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+    };
+}
+
+for (let i = 0; i < 100; i++) {
+    sparkles.push(createSparkle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let s of sparkles) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`;
+        ctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > width || s.y < 0 || s.y > height) {
+            Object.assign(s, createSparkle());
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+<script>
+document.getElementById("upProfileBtn").addEventListener("click", async function () {
+    const email = document.getElementById("email").value;
+    if (!email) {
+        alert("❌ Ошибка: email не найден в localStorage.");
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/profile/up", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email })
+        });
+
+        if (response.ok) {
+            alert("🔝 Анкета успешно поднята! Вы теперь в верхних позициях ✨");
+        } else {
+            alert("❌ Ошибка при попытке поднять анкету.");
+        }
+    } catch (err) {
+        console.error("Ошибка запроса:", err);
+        alert("❌ Сбой сети или сервера.");
+    }
+});
+</script>
+
+<script>
+// 👉 Страны и их города
+const citiesByCountry = {
+    Georgia: ["Tbilisi", "Batumi", "Kutaisi", "Rustavi"],
+    Armenia: ["Yerevan"],
+    Azerbaijan: ["Baku", "Ganja"],
+    Turkey: ["Istanbul", "Ankara", "Izmir"],
+    UAE: ["Dubai"]
+};
+
+// 👉 Города и их районы
+const districtsByCity = {
+    "Tbilisi": [
+        "Old Town", "Saburtalo", "Vake", "Didi Dighomi", "Gldani", "Avlabari",
+        "Ortachala", "Samgori", "Isani", "Nadzaladevi", "Chughureti", "Sololaki", "Mtatsminda"
+    ],
+    "Istanbul": [
+        "Beyoglu", "Sisli", "Besiktas", "Kadikoy", "Fatih", "Uskudar"
+    ],
+    "Baku": [
+        "Yasamal", "Binagadi", "Narimanov", "Sabayil", "Khatai", "Surakhani",
+        "Garadagh", "Nizami", "Pirallahi"
+    ]
+};
+
+// 👉 Подгрузка городов при выборе страны
+document.getElementById("country")?.addEventListener("change", function () {
+    const selectedCountry = this.value;
+    const citySelect = document.getElementById("city");
+    const districtSelect = document.getElementById("district");
+
+    citySelect.innerHTML = `<option value="">🏙️ City</option>`;
+    districtSelect.innerHTML = `<option value="">📍 District</option>`;
+    districtSelect.style.display = "none";
+
+    if (citiesByCountry[selectedCountry]) {
+        citiesByCountry[selectedCountry].forEach(city => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    }
+});
+
+// 👉 Подгрузка районов при выборе города
+document.getElementById("city")?.addEventListener("change", function () {
+    const selectedCity = this.value;
+    const districtSelect = document.getElementById("district");
+
+    districtSelect.innerHTML = `<option value="">📍 District</option>`;
+    districtSelect.style.display = "none";
+
+    if (districtsByCity[selectedCity]) {
+        districtSelect.style.display = "block";
+        districtsByCity[selectedCity].forEach(district => {
+            const option = document.createElement("option");
+            option.value = district;
+            option.textContent = district;
+            districtSelect.appendChild(option);
+        });
+    }
+});
+</script>
+
+
+</body>
+</html>

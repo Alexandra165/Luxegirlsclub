@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV6WK3WJ7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YV6WK3WJ7D');
+</script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Анкета успешно создана! Добро пожаловать в LuxGirlsClub — элитное сообщество моделей в Тбилиси, Ереване и Баку.">
+    <link rel="canonical" href="https://luxegirlsclub.com/success.html">
+    <title>Успешная регистрация — LuxGirlsClub</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/favicon.jpg" type="image/jpg">
+    <script src="/static/languages.js" defer></script>
+</head>
+<body>
+
+  <div class="page-background" style="background-image: url('/static/images/bg-success.jpg');"></div>
+  <div class="page-overlay"></div>
+<canvas id="sparkle-canvas"></canvas>
+  <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 30px; text-align: center;">
+      <h2 style="color: #FFD700; font-size: 32px; margin-bottom: 15px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
+  ✅ Ваша анкета успешно создана!
+</h2>
+
+<p style="font-size: 18px; color: #fff; margin-bottom: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.7);">
+  Для активации аккаунта и получения подробной информации, пожалуйста, напишите нам в Telegram.
+</p>
+
+<a href="https://t.me/LuxGirlsClub" target="_blank" class="btn-auth" style="background-color: gold; color: black; font-weight: bold; margin-bottom: 30px;">
+  Связаться в Telegram
+</a>
+
+<a href="/login.html" class="btn-auth" style="margin-bottom: 15px; color: black;">Войти</a>
+<a href="/" class="btn-auth" style="color: black;">На главную</a>
+
+
+
+<script>
+const canvas = document.getElementById("sparkle-canvas");
+const ctx = canvas.getContext("2d");
+let width, height;
+let sparkles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function createSparkle() {
+    return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+    };
+}
+
+for (let i = 0; i < 100; i++) {
+    sparkles.push(createSparkle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let s of sparkles) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`;
+        ctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > width || s.y < 0 || s.y > height) {
+            Object.assign(s, createSparkle());
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+</body>
+</html>
+

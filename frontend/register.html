@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV6WK3WJ7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YV6WK3WJ7D');
+</script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Присоединяйся к LuxGirlsClub. Регистрируй анкету и работай с элитными клиентами в Тбилиси, Ереване и Баку.">
+    <link rel="canonical" href="https://luxegirlsclub.com/register.html">
+    <title>Регистрация модели — LuxGirlsClub</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/favicon.jpg" type="image/jpg">
+    <script src="/static/languages.js" defer></script>
+
+<style>
+  .form-check-label a {
+    color: #fdd835; /* Золотистый или белый #fff — как нравится */
+    text-decoration: underline;
+  }
+
+  .form-check-label a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+</style>
+
+
+</head>
+
+<body>
+
+<div class="language-switcher">
+
+    <img src="/static/flags/russianflag.png" alt="RU" width="28" onclick="switchLanguage('ru')" style="cursor:pointer; margin: 0 6px;">
+    <img src="/static/flags/ukflag.png" alt="EN" width="28" onclick="switchLanguage('en')" style="cursor:pointer; margin: 0 6px;">
+</div>
+
+
+<div class="page-background" style="background-image: url('/static/images/bg-register.jpg');"></div>
+<div class="page-overlay"></div>
+<canvas id="sparkle-canvas"></canvas>
+<div class="register-container">
+    <h2 id="reg_header">Регистрация</h2>
+    <form id="registerForm" method="post" enctype="multipart/form-data">
+
+        <label id="label_username">Имя:</label>
+        <input type="text" name="name" required>
+
+        <label id="label_email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label id="label_password">Пароль:</label>
+        <input type="password" name="password" required>
+
+<label for="phone" data-translate="label_phone">Телефон</label>
+<input
+  type="tel"
+  id="phone"
+  name="phone"
+  placeholder="+код страны и номер"
+  required
+>
+
+<label data-translate="label_messenger">Выберите мессенджеры</label>
+<div class="messenger-checkboxes">
+  <label><input type="checkbox" name="messenger[]" value="whatsapp"> WhatsApp</label>
+<label><input type="checkbox" name="messenger[]" value="telegram"> Telegram</label>
+
+</div>
+
+
+
+
+        <label id="label_profile_name">Название анкеты:</label>
+        <input type="text" name="profile_name" required>
+
+        <label id="label_age">Возраст (лет):</label>
+        <input type="number" name="age" min="18" max="100" required>
+
+        <label id="label_height">Рост (в см):</label>
+        <input type="number" id="height" name="height" min="100" max="250">
+
+        <label id="label_weight">Вес (в кг):</label>
+        <input type="number" id="weight" name="weight" min="30" max="200">
+
+
+     <label id="label_eye_color">Цвет глаз:</label>
+    <select name="eye_color">
+        <option id="opt_eye_brown">Карие</option>
+        <option id="opt_eye_blue">Голубые</option>
+        <option id="opt_eye_green">Зелёные</option>
+        <option id="opt_eye_gray">Серые</option>
+        <option id="opt_eye_black">Чёрные</option>
+        <option id="opt_eye_other">Другой</option>
+    </select>
+
+
+            <label id="label_hair_color">Цвет волос:</label>
+<select name="hair_color" id="hair_color">
+    <option value="blonde" id="opt_hair_blonde">Блондинка</option>
+    <option value="brunette" id="opt_hair_brunette">Брюнетка</option>
+    <option value="red" id="opt_hair_red">Рыжая</option>
+    <option value="brown" id="opt_hair_brown">Шатенка</option>
+    <option value="other" id="opt_hair_other">Другой</option>
+</select>
+
+
+    <label id="label_hair_length">Длина волос:</label>
+    <select name="hair_length">
+        <option id="opt_hair_short">Короткие</option>
+        <option id="opt_hair_medium">Средние</option>
+        <option id="opt_hair_long">Длинные</option>
+    </select>
+
+<label id="label_breast_size">Размер груди:</label>
+    <select name="breast_size">
+    <option id="opt_breast_a">A</option>
+    <option id="opt_breast_b">B</option>
+    <option id="opt_breast_c">C</option>
+    <option id="opt_breast_d">D</option>
+    <option id="opt_breast_eplus">E+</option>
+</select>
+
+
+    <label data-translate="label_breast_type">Тип груди:</label>
+    <select name="breast_type">
+        <option id="opt_breast_natural">Натуральная</option>
+        <option id="opt_breast_silicone">Силиконовая</option>
+    </select>
+
+<label data-translate="label_intim">Интимная стрижка:</label>
+<select id="intim">
+    <option value="Shaved" data-translate="intim_shaved">Бритая</option>
+    <option value="Styled" data-translate="intim_styled">С прической</option>
+</select>
+
+    <label id="label_orientation">Ориентация:</label>
+    <select name="orientation">
+        <option id="opt_orientation_hetero">Гетеро</option>
+        <option id="opt_orientation_bi">Би</option>
+        <option id="opt_orientation_lesbi">Лесби</option>
+    </select>
+
+    <label id="label_smoke" data-translate="label_smoke">Курит:</label>
+<select name="smoke">
+  <option value="" selected disabled>Выберите</option>
+  <option value="1" id="opt_smoke_yes" data-translate="option_yes">Да</option>
+  <option value="0" id="opt_smoke_no" data-translate="option_no">Нет</option>
+</select>
+
+<label id="label_tattoo" data-translate="label_tattoo">Есть татуировки:</label>
+<select name="tattoo">
+  <option value="" selected disabled>Выберите</option>
+  <option value="1" id="opt_tattoo_yes" data-translate="option_yes">Да</option>
+  <option value="0" id="opt_tattoo_no" data-translate="option_no">Нет</option>
+</select>
+
+<label id="label_piercing" data-translate="label_piercing">Есть пирсинг:</label>
+<select name="piercing">
+  <option value="" selected disabled>Выберите</option>
+  <option value="1" id="opt_piercing_yes" data-translate="option_yes">Да</option>
+  <option value="0" id="opt_piercing_no" data-translate="option_no">Нет</option>
+</select>
+
+
+
+<label id="label_country">Страна:</label>
+<select name="country" required data-translate-options="opt_country">
+    <option value="" id="opt_country_choose">Выберите страну</option>
+    <option value="Georgia" id="opt_country_georgia">Грузия</option>
+    <option value="Armenia" id="opt_country_armenia">Армения</option>
+    <option value="Azerbaijan" id="opt_country_azerbaijan">Азербайджан</option>
+    <option value="Turkey" id="opt_country_turkey">Турция</option>
+    <option value="UAE" id="opt_country_uae">ОАЭ</option>
+</select>
+
+<label id="label_city" data-translate="label_city">Город:</label>
+<select name="city" data-translate-options="opt_city" required>
+  <option value="" disabled selected data-translate="select_city">Выберите город</option>
+
+  <!-- Georgia -->
+  <option value="Tbilisi" id="opt_city_tbilisi">Tbilisi</option>
+  <option value="Batumi" id="opt_city_batumi">Batumi</option>
+  <option value="Kutaisi" id="opt_city_kutaisi">Kutaisi</option>
+  <option value="Rustavi" id="opt_city_rustavi">Rustavi</option>
+
+  <!-- Armenia -->
+  <option value="Yerevan" id="opt_city_yerevan">Yerevan</option>
+
+  <!-- Azerbaijan -->
+  <option value="Baku" id="opt_city_baku">Baku</option>
+  <option value="Gyanja" id="opt_city_gyanja">Gyanja</option>
+  <option value="Sumgait" id="opt_city_sumgait">Sumgait</option>
+
+  <!-- Turkey -->
+  <option value="Istanbul" id="opt_city_istanbul">Istanbul</option>
+  <option value="Ankara" id="opt_city_ankara">Ankara</option>
+  <option value="Izmir" id="opt_city_izmir">Izmir</option>
+
+  <!-- UAE -->
+  <option value="Dubai" id="opt_city_dubai">Dubai</option>
+
+  <!-- Other -->
+  <option value="Other" id="opt_city_other">Other</option>
+</select>
+
+
+
+<label id="label_district" data-translate="label_district">Район:</label>
+<select name="district" data-translate-options="opt_district">
+  <option value="" disabled selected data-translate="select_district">Выберите район</option>
+
+  <optgroup label="Georgia">
+    <option value="Vake" id="opt_district_vake">Vake</option>
+    <option value="Saburtalo" id="opt_district_saburtalo">Saburtalo</option>
+    <option value="Isani" id="opt_district_isani">Isani</option>
+    <option value="Samgori" id="opt_district_samgori">Samgori</option>
+    <option value="Gldani" id="opt_district_gldani">Gldani</option>
+    <option value="Dighomi" id="opt_district_dighomi">Dighomi</option>
+    <option value="Mtatsminda" id="opt_district_mtatcminda">Mtatsminda</option>
+    <option value="Chughureti" id="opt_district_chughureti">Chughureti</option>
+    <option value="Ortachala" id="opt_district_ortachala">Ortachala</option>
+  </optgroup>
+
+  <optgroup label="Azerbaijan">
+    <option value="Nasimi" id="opt_district_nasimi">Nasimi</option>
+    <option value="Narimanov" id="opt_district_narimanov">Narimanov</option>
+    <option value="Yasamal" id="opt_district_yasamal">Yasamal</option>
+    <option value="Sabayil" id="opt_district_sabayil">Sabayil</option>
+    <option value="Khatai" id="opt_district_khatai">Khatai</option>
+  </optgroup>
+
+  <optgroup label="Turkey (Istanbul)">
+    <option value="Kadikoy" id="opt_district_kadikoy">Kadıköy</option>
+    <option value="Besiktas" id="opt_district_besiktas">Beşiktaş</option>
+    <option value="Sisli" id="opt_district_sisli">Şişli</option>
+    <option value="Fatih" id="opt_district_fatih">Fatih</option>
+    <option value="Uskudar" id="opt_district_uskudar">Üsküdar</option>
+  </optgroup>
+
+  <option value="Other" id="opt_district_other">Other</option>
+</select>
+
+
+
+
+<label id="label_nationality">Национальность:</label>
+<select name="nationality">
+    <option id="opt_nat_russian">Русская</option>
+    <option id="opt_nat_georgian">Грузинка</option>
+    <option id="opt_nat_armenian">Армянка</option>
+    <option id="opt_nat_ukrainian">Украинка</option>
+    <option id="opt_nat_belarusian">Белоруска</option>
+    <option id="opt_nat_turkish">Турчанка</option>
+    <option id="opt_nat_azerbaijani">Азербайджанка</option>
+    <option id="opt_nat_other">Другое</option>
+</select>
+
+<label id="label_languages">Знание языков:</label>
+
+<div class="language-level">
+  <span id="lang_georgian">Грузинский:</span>
+  <select name="languages[georgian]">
+    <option value="" id="opt_lang_none_ge">Не владею</option>
+    <option id="opt_lang_fluent_ge">Свободно</option>
+    <option id="opt_lang_good_ge">Хорошо</option>
+    <option id="opt_lang_medium_ge">Средне</option>
+    <option id="opt_lang_minimal_ge">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span id="lang_russian">Русский:</span>
+  <select name="languages[russian]">
+    <option value="" id="opt_lang_none_ru">Не владею</option>
+    <option id="opt_lang_fluent_ru">Свободно</option>
+    <option id="opt_lang_good_ru">Хорошо</option>
+    <option id="opt_lang_medium_ru">Средне</option>
+    <option id="opt_lang_minimal_ru">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span id="lang_english">Английский:</span>
+  <select name="languages[english]">
+    <option value="" id="opt_lang_none_en">Не владею</option>
+    <option id="opt_lang_fluent_en">Свободно</option>
+    <option id="opt_lang_good_en">Хорошо</option>
+    <option id="opt_lang_medium_en">Средне</option>
+    <option id="opt_lang_minimal_en">Минимально</option>
+  </select>
+</div>
+
+<div class="language-level">
+  <span id="lang_azerbaijani">Азербайджанский:</span>
+  <select name="languages[azerbaijani]">
+    <option value="" id="opt_lang_none_az">Не владею</option>
+    <option id="opt_lang_fluent_az">Свободно</option>
+    <option id="opt_lang_good_az">Хорошо</option>
+    <option id="opt_lang_medium_az">Средне</option>
+    <option id="opt_lang_minimal_az">Минимально</option>
+  </select>
+</div>
+
+
+
+<label id="label_services">Предоставляемые услуги:</label><br>
+<div class="service-grid">
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="69 position">69 position</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Classic vaginal sex">Classic vaginal sex</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Cum in face">Cum in face</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Cum on body">Cum on body</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Cunnilingus">Cunnilingus</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Dirty talk">Dirty talk</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Domination">Domination</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Erotic massage">Erotic massage</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Foot fetish">Foot fetish</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="French kissing">French kissing</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="GFE">GFE</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Handjob">Handjob</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Kamasutra">Kamasutra</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Masturbation">Masturbation</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Prostate massage">Prostate massage</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Role-play">Role-play</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Sex between breasts">Sex between breasts</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Sex Toys">Sex Toys</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Strapon service">Strapon service</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Striptease">Striptease</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Uniforms">Uniforms</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Anal">Anal</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="BDSM - Femdom">BDSM - Femdom</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Bondage">Bondage</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Couples">Couples</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Cum in mouth">Cum in mouth</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Deepthroat">Deepthroat</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Duo with girl">Duo with girl</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Erotic Photos">Erotic Photos</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Findom">Findom</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Fingering">Fingering</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Golden shower give">Golden shower give</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Golden shower receive">Golden shower receive</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Group sex">Group sex</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Oral without condom">Oral without condom</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Rimming active">Rimming active</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Rimming passive">Rimming passive</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Squirting">Squirting</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Submissive">Submissive</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Swallowing">Swallowing</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="Video with sex">Video with sex</label></div>
+  <div class="service-item"><label><input type="checkbox" name="services[]" value="With 2 men">With 2 men</label></div>
+</div>
+
+
+<label id="label_about">О себе:</label>
+<textarea name="about"></textarea>
+
+<label id="label_photos">Загрузить фото (от 2 до 10 шт.):</label>
+<div class="file-upload">
+    <input type="file" id="photos" name="photos[]" accept="image/*" multiple required>
+    <span id="file-photos-name" class="file-name">Файл не выбран</span>
+</div>
+
+<label id="label_videos">Загрузить видео (до 5 шт.):</label>
+<div class="file-upload">
+    <input type="file" id="videos" name="videos[]" accept="video/*" multiple>
+    <span id="file-videos-name" class="file-name">Файл не выбран</span>
+</div>
+
+
+<label id="label_visit_type">Тип встречи:</label>
+<div class="visit-type">
+    <label><input type="checkbox" name="incall" value="true" id="check_incall"> Incall (у девушки)</label>
+    <label><input type="checkbox" name="outcall" value="true" id="check_outcall"> Outcall (у клиента)</label>
+</div>
+
+<label id="label_currency">Валюта:</label>
+<select name="currency" required>
+    <option value="USD" id="opt_currency_usd">USD ($)</option>
+    <option value="EUR" id="opt_currency_eur">EUR (€)</option>
+    <option value="GEL" id="opt_currency_gel">GEL (₾)</option>
+    <option value="AMD" id="opt_currency_amd">AMD (֏)</option>
+    <option value="RUB" id="opt_currency_rub">RUB (₽)</option>
+    <option value="TRY" id="opt_currency_try">TRY (₺)</option>
+    <option value="AED" id="opt_currency_aed">AED (د.إ)</option>
+</select>
+
+<label id="label_prices">Цены на услуги:</label>
+<div class="price-fields">
+    <strong id="strong_incall">Incall:</strong><br>
+    <input type="number" name="price_incall_1h" placeholder="1 час (Incall)">
+    <input type="number" name="price_incall_2h" placeholder="2 часа (Incall)">
+    <input type="number" name="price_incall_24h" placeholder="24 часа (Incall)">
+    <br><strong id="strong_outcall">Outcall:</strong><br>
+    <input type="number" name="price_outcall_1h" placeholder="1 час (Outcall)">
+    <input type="number" name="price_outcall_2h" placeholder="2 часа (Outcall)">
+    <input type="number" name="price_outcall_24h" placeholder="24 часа (Outcall)">
+</div>
+
+<div id="registration-message" style="display: none; padding: 15px; margin-top: 20px; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 6px; font-weight: bold; text-align: center;">
+  Пожалуйста, подождите, анкета создаётся…
+</div>
+
+<div class="form-check mt-3">
+  <input class="form-check-input" type="checkbox" id="agreeRules" name="agreeRules">
+  <label class="form-check-label" for="agreeRules">
+    Я прочитала и принимаю <a href="rules.html" target="_blank">правила сайта</a>
+  </label>
+</div>
+
+
+<button type="submit" id="btn_register">Зарегистрироваться</button>
+
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+ const agree = document.getElementById("agreeRules");
+    if (!agree.checked) {
+        alert("❌ Вы должны прочитать и принять правила сайта, чтобы продолжить регистрацию.");
+        return;
+    }
+
+    const photoFiles = document.getElementById("photos").files;
+    const videoFiles = document.getElementById("videos").files;
+    const messageBox = document.getElementById("registration-message");
+
+    if (photoFiles.length < 2 || photoFiles.length > 10) {
+        alert("❌ Выберите от 2 до 10 фото!");
+        return;
+    }
+
+    if (videoFiles.length > 5) {
+        alert("❌ Можно загрузить не более 5 видео!");
+        return;
+    }
+
+    // Показываем сообщение
+    messageBox.style.display = "block";
+
+    // Задержка перед отправкой
+    setTimeout(() => {
+        const formData = new FormData(event.target);
+
+        fetch("/register", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                window.location.href = "/success.html";
+            } else {
+                alert("❌ Ошибка: " + data.message);
+            }
+        })
+        .catch(err => {
+            alert("❌ Ошибка при отправке данных!");
+        });
+
+    }, 1500);
+});
+</script>
+
+
+
+
+<script>
+const canvas = document.getElementById("sparkle-canvas");
+const ctx = canvas.getContext("2d");
+let width, height;
+let sparkles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function createSparkle() {
+    return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+    };
+}
+
+for (let i = 0; i < 100; i++) {
+    sparkles.push(createSparkle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let s of sparkles) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`; // Золотые блёстки
+        ctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > width || s.y < 0 || s.y > height) {
+            Object.assign(s, createSparkle());
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+<script>
+// Обновляем надписи после выбора файлов
+document.getElementById("photos").addEventListener("change", function () {
+    const span = document.getElementById("file-photos-name");
+    if (this.files.length > 0) {
+        span.textContent = Array.from(this.files).map(f => f.name).join(", ");
+    } else {
+        span.textContent = window.translations[localStorage.getItem("selectedLanguage") || "ru"].file_not_selected;
+    }
+});
+
+document.getElementById("videos").addEventListener("change", function () {
+    const span = document.getElementById("file-videos-name");
+    if (this.files.length > 0) {
+        span.textContent = Array.from(this.files).map(f => f.name).join(", ");
+    } else {
+        span.textContent = window.translations[localStorage.getItem("selectedLanguage") || "ru"].file_not_selected;
+    }
+});
+
+</script>
+<!--
+<script src="https://www.google.com/recaptcha/api.js?render=6LdJMS0rAAAAAGX6rVZxyrKov6apITCA34JvoazX"></script>
+<script>
+  window.addEventListener("load", function () {
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LdJMS0rAAAAAGX6rVZxyrKov6apITCA34JvoazX', { action: 'submit' }).then(function (token) {
+        console.log("✅ reCAPTCHA token получен:", token); // 👈 добавили вывод
+        let input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "g-recaptcha-response";
+        input.value = token;
+        document.getElementById("registerForm").appendChild(input);
+      }, function (error) {
+        console.error("❌ Ошибка получения токена:", error); // 👈 вывод ошибки
+      });
+    });
+  });
+</script>
+-->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const checkbox = document.getElementById("agreeRules");
+
+  if (form && checkbox) {
+    form.addEventListener("submit", function (e) {
+      if (!checkbox.checked) {
+        e.preventDefault(); // ⛔ Останавливаем отправку
+        alert("Пожалуйста, подтвердите, что вы прочитали и принимаете правила сайта.");
+      }
+    });
+  }
+});
+</script>
+
+
+</body>
+</html>

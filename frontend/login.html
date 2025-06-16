@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV6WK3WJ7D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YV6WK3WJ7D');
+</script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your escort profile has been created. Welcome to LuxGirlsClub – platform for exclusive private meetings in Tbilisi, Yerevan and Baku.">
+    <link rel="canonical" href="https://luxegirlsclub.com/login.html">
+    <title>Успешная регистрация — LuxGirlsClub</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/favicon.jpg" type="image/jpg">
+    <script src="/static/languages.js" defer></script>
+</head>
+
+
+<body>
+<div class="page-background" style="background-image: url('/static/images/bg-login.jpg');"></div>
+<div class="page-overlay"></div>
+<canvas id="sparkle-canvas"></canvas>
+<div class="language-switcher">
+    <img src="/static/flags/georgianflag.png" alt="Georgian" onclick="switchLanguage('ge')" class="flag">
+    <img src="/static/flags/russianflag.png" alt="Russian" onclick="switchLanguage('ru')" class="flag">
+    <img src="/static/flags/ukflag.png" alt="English" onclick="switchLanguage('en')" class="flag">
+</div>
+
+<div class="login-container">
+    <h2 id="login-header">Вход</h2>
+    <form id="login-form">
+        <label for="email" id="label-email">Email *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password" id="label-password">Пароль *</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn-auth" id="btn-login">Войти</button>
+    </form>
+
+    <p id="no-account">Нет аккаунта? <a href="/register.html" id="register-link">Зарегистрироваться</a></p>
+</div>
+
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://t.me/LuxGirlsClub" target="_blank">
+    <img src="/static/images/telegram-qr.png" alt="QR to Telegram" width="160">
+    <div style="margin-top: 8px; font-weight: bold; color: #0088cc;">💬 <strong>LuxGirlsClub Support</strong></div>
+  </a>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // остановить обычную отправку
+
+
+const email = emailInput.value;
+const password = passwordInput.value;
+
+// ✅ ЛОГИ — ставим СРАЗУ после получения значений
+console.log("📥 Email:", email);
+console.log("🔑 Пароль:", password);
+
+console.log("🚀 Отправляем логин:", email, password);
+
+const formData = new URLSearchParams();
+formData.append("email", email);
+formData.append("password", password);
+
+fetch("/api/login", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData
+})
+.then(response => {
+    if (response.ok) {
+        // 💾 сохраняем email
+        localStorage.setItem("userEmail", email);
+        document.cookie = `userEmail=${email}; path=/`;
+
+
+        // ✅ Переход в аккаунт
+        window.location.href = "/account.html";
+    } else {
+        alert("Неверный email или пароль");
+    }
+})
+.catch(error => {
+    console.error("Ошибка входа:", error);
+    alert("Ошибка сервера. Попробуйте позже.");
+});
+
+    });
+});
+</script>
+
+<script>
+const canvas = document.getElementById("sparkle-canvas");
+const ctx = canvas.getContext("2d");
+let width, height;
+let sparkles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function createSparkle() {
+    return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+    };
+}
+
+for (let i = 0; i < 100; i++) {
+    sparkles.push(createSparkle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let s of sparkles) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 215, 0, ${s.alpha})`;
+        ctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > width || s.y < 0 || s.y > height) {
+            Object.assign(s, createSparkle());
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+</body>
+</html>
