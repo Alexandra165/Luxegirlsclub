@@ -40,9 +40,9 @@ var (
 func init() {
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Println("❌ Ошибка загрузки .env:", err)
+		log.Println("Ошибка загрузки .env:", err)
 	} else {
-		log.Println("✅ Файл .env загружен успешно")
+		log.Println("Файл .env загружен успешно")
 	}
 
 	bucket = os.Getenv("BACKBLAZE_BUCKET")
@@ -83,18 +83,18 @@ func connectDB() (*sql.DB, error) {
 }
 
 func hashPassword(password string) (string, error) {
-	log.Println("🔒 Начало хеширования пароля...")
+	log.Println("Начало хеширования пароля...")
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		log.Println("Ошибка при хешировании пароля:", err)
 		return "", err
 	}
-	log.Println("✅ Пароль успешно захеширован!")
+	log.Println("Пароль успешно захеширован!")
 	return string(bytes), nil
 }
 
 func registerHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("📩 Новый запрос на /register")
+	log.Println("Новый запрос на /register")
 
 	if r.Method != http.MethodPost {
 		log.Println("Ошибка: Неверный метод", r.Method)
@@ -102,7 +102,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Println("📌 Заголовки запроса:", r.Header)
+	log.Println("Заголовки запроса:", r.Header)
 
 	contentType := r.Header.Get("Content-Type")
 	if !strings.Contains(contentType, "multipart/form-data") {
@@ -118,7 +118,6 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// ⛔ Проверка галочки
 	agree := r.FormValue("agreeRules")
 	if agree != "on" {
 		http.Error(w, "Вы должны принять правила сайта", http.StatusBadRequest)
@@ -171,7 +170,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	if engValue, exists := breastTypeMapping[breastType]; exists {
 		breastType = engValue
 	} else {
-		log.Println("❌ Ошибка: Недопустимое значение для breast_type:", breastType)
+		log.Println("Ошибка: Недопустимое значение для breast_type:", breastType)
 		http.Error(w, "Ошибка: Некорректный тип груди", http.StatusBadRequest)
 		return
 	}
@@ -190,7 +189,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	if engValue, exists := orientationMapping[orientation]; exists {
 		orientation = engValue
 	} else {
-		log.Println("❌ Ошибка: Недопустимое значение для orientation:", orientation)
+		log.Println("Ошибка: Недопустимое значение для orientation:", orientation)
 		http.Error(w, "Ошибка: Некоррентная ориентация", http.StatusBadRequest)
 		return
 	}
@@ -254,13 +253,13 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	messenger := strings.Join(r.Form["messenger[]"], ",")
-	log.Println("📌 Messenger:", messenger)
+	log.Println("Messenger:", messenger)
 	features := strings.Join(r.Form["features[]"], ",")
 	meetingFormat := strings.Join(r.Form["meeting_format[]"], ",")
 
-	log.Println("📌 Messenger:", messenger)
-	log.Println("📌 Features:", features)
-	log.Println("📌 Meeting Format:", meetingFormat)
+	log.Println("Messenger:", messenger)
+	log.Println("Features:", features)
+	log.Println("Meeting Format:", meetingFormat)
 
 	var conversionErr error
 	age, conversionErr = strconv.Atoi(r.FormValue("age"))
@@ -450,7 +449,7 @@ INSERT INTO profiles (
 		log.Println("Видео не загружены")
 	}
 
-	log.Println("✅ Анкета успешно создана:", username)
+	log.Println("Анкета успешно создана:", username)
 	w.WriteHeader(http.StatusCreated)
 	fmt.Fprintf(w, `{"status": "success", "message": "Анкета успешно создана"}`)
 
@@ -465,7 +464,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	email := r.FormValue("email")
 
 	if email == "" {
-		log.Println("❌ Ошибка: Email не передан в запросе")
+		log.Println("Ошибка: Email не передан в запросе")
 		http.Error(w, "Email обязателен", http.StatusBadRequest)
 		return
 	}
@@ -498,10 +497,10 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("Хэш из базы:", storedHash)
 
-	log.Printf("➡️ Длина хэша: %d\n", len(storedHash))
-	log.Printf("➡️ Длина пароля: %d\n", len(password))
-	log.Printf("➡️ Байты хэша: %q\n", storedHash)
-	log.Printf("➡️ Байты пароля: %q\n", password)
+	log.Printf("Длина хэша: %d\n", len(storedHash))
+	log.Printf("Длина пароля: %d\n", len(password))
+	log.Printf("Байты хэша: %q\n", storedHash)
+	log.Printf("Байты пароля: %q\n", password)
 
 	err = bcrypt.CompareHashAndPassword([]byte(storedHash), []byte(password))
 	if err != nil {
@@ -601,7 +600,7 @@ ORDER BY
 
 		photoRows, err := db.Query(`SELECT photo_url FROM profile_photos WHERE profile_id = ? ORDER BY id DESC`, id)
 		if err != nil {
-			log.Println("⚠️ Ошибка загрузки фото для профиля", id, ":", err)
+			log.Println("Ошибка загрузки фото для профиля", id, ":", err)
 			continue
 		}
 
@@ -846,7 +845,7 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 
 	serviceRows, err := db.Query(`SELECT service_name, included, extra_price FROM services WHERE profile_id = ?`, profileIDInt)
 	if err != nil {
-		log.Println("❌ Ошибка загрузки услуг:", err)
+		log.Println("Ошибка загрузки услуг:", err)
 		http.Error(w, "Ошибка загрузки услуг", http.StatusInternalServerError)
 		return
 	}
@@ -981,7 +980,7 @@ func uploadFileToBackblaze(file io.Reader, fileName string) (string, error) {
 		Body:   reader,
 	}
 
-	log.Println("📤 Загружаем файл в Backblaze через S3 API...")
+	log.Println("Загружаем файл в Backblaze через S3 API...")
 
 	_, err = svc.PutObject(input)
 	if err != nil {
@@ -1251,7 +1250,7 @@ func deleteVideoHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func uploadPhotoHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("📤 Запрос на загрузку фото")
+	log.Println("Запрос на загрузку фото")
 
 	if r.Method != http.MethodPost {
 		http.Error(w, `{"error": "Метод не разрешён"}`, http.StatusMethodNotAllowed)
@@ -2287,7 +2286,7 @@ func luxQueensHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	country := r.URL.Query().Get("country")
-	log.Println("🌍 Запрашиваем Lux Queens для страны:", country)
+	log.Println("Запрашиваем Lux Queens для страны:", country)
 
 	db, err := connectDB()
 	if err != nil {
@@ -2441,7 +2440,7 @@ func viewProfileHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func incrementViewsHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("👁️ Получен запрос на увеличение просмотров")
+	log.Println("Получен запрос на увеличение просмотров")
 
 	if r.Method != http.MethodPost {
 		http.Error(w, `{"status":"error","message":"Метод не разрешён"}`, http.StatusMethodNotAllowed)
@@ -2833,24 +2832,24 @@ func startServer() {
 		http.Redirect(w, r, "/api/sitemap", http.StatusMovedPermanently)
 	})
 
-	log.Println("🔹 Зарегистрированные маршруты:")
-	log.Println("✅ /register")
-	log.Println("✅ /profiles")
-	log.Println("✅ /myprofile")
-	log.Println("✅ /api/login")
-	log.Println("✅ /delete_photo")
-	log.Println("✅ /upload_photo")
-	log.Println("✅ /upload_video")
-	log.Println("✅ /update_profile")
-	log.Println("✅ /log-whatsapp-click")
-	log.Println("📥 Вызван deleteVideoHandler")
+	log.Println("Зарегистрированные маршруты:")
+	log.Println("/register")
+	log.Println("/profiles")
+	log.Println("/myprofile")
+	log.Println("/api/login")
+	log.Println("/delete_photo")
+	log.Println("/upload_photo")
+	log.Println("/upload_video")
+	log.Println("/update_profile")
+	log.Println("/log-whatsapp-click")
+	log.Println("Вызван deleteVideoHandler")
 
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080" 
 	}
 
-	log.Printf("🚀 Сервер запущен на 0.0.0.0:%s\n", port)
+	log.Printf("Сервер запущен на 0.0.0.0:%s\n", port)
 
 	err := http.ListenAndServe("0.0.0.0:"+port, mux)
 	if err != nil {
