@@ -1,8 +1,8 @@
-LuxeGirlsClub
+LuxGirlsClub
 
 LuxeGirlsClub is a fully deployed multilingual web platform for managing user profiles. It is built from scratch and maintained by a single developer. The project includes full backend, frontend, cloud integration, admin tools, and SEO.
 
-Live: https://luxegirlsclub.com
+Live: https://luxgirlsclub.com
 
 Stack
 
